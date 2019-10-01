@@ -1,0 +1,30 @@
+create table Student(Sid integer, Cid varchar(100), C_name varchar(100), S_name varchar(100), marks integer,primary key (Sid,Cid));
+insert into Student(Sid, Cid, C_name, S_name, marks) values(101,"CO101","DBMS","aashay", 84);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(102,"CO102","OS","abheek", 74);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(103,"CO103","CN","abhishek", 65);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(104,"CO101","DBMS","adarsh", 91);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(105,"CO102","OS","akash", 98);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(106,"CO103","CN","mohit", 46);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(107,"CO106","Economics","moaz", 12);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(108,"CO102","OS","ankit", 34);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(102,"CO101","DBMS","abheek", 76);
+insert into Student(Sid, Cid, C_name, S_name, marks) values(101,"CO103","CN","aashay", 67);
+delimiter ;
+delimiter ..
+create procedure student_name() begin select distinct S_name from Student; end ..
+delimiter ;
+call student_name();
+delimiter ..
+create procedure getmarks(stuid INT,couid VARCHAR(100)) begin select marks from Student where Sid=stuid and Cid=couid; end ..
+DELIMITER ;
+call getmarks(102,"CO102");
+delimiter ..
+CREATE PROCEDURE student_count() begin select count(distinct Sid) from Student; end..
+delimiter ;
+call student_count();
+delimiter ..
+create procedure event() begin declare ans int default 0; select count(distinct Sid) into ans from Student; Select ans; end .. 
+delimiter ;
+call event();
+
+
